@@ -2,7 +2,7 @@
 dependencies: []
 galaxy_info:
   author: Troy Kinsella
-  description: 
+  description: Install myself
   license: MIT
   min_ansible_version: 1.2
   platforms:
