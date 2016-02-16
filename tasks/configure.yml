@@ -1,0 +1,20 @@
+---
+- authorized_key:
+    user: "{{ troy_user_name }}"
+    state: present
+    key: "{{ lookup('file', '.ssh/id_rsa.pub') }}"
+
+- template:
+    src: sudo.conf.j2
+    dest: /etc/sudoers.d/{{ troy_user_name }}
+
+- git:
+    repo: "{{ troy_dotfiles_repo }}"
+    dest: /home/{{ troy_user_name }}/.dotfiles
+    force: yes
+
+- sudo_user: "{{ troy_user_name }}"
+  shell: ./bin/install.sh
+  args:
+    chdir: /home/{{ troy_user_name }}/.dotfiles
+    creates: /home/{{ troy_user_name }}/.config/fish/config.fish

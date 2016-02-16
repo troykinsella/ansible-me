@@ -1,0 +1,11 @@
+---
+- apt:
+    state: latest
+    pkg: "{{ item }}"
+  sudo: true
+  with_items:
+  - htop
+  - curl
+  - nmap
+  - fish
+  - git

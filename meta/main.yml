@@ -1,0 +1,17 @@
+---
+dependencies: []
+galaxy_info:
+  author: Troy Kinsella
+  description: 
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+    - utopic
+    - vivid
+    - wily
+  galaxy_tags:
+  - system
+

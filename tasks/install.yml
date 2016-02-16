@@ -1,0 +1,26 @@
+---
+- name: create group
+  sudo: true
+  group:
+    name: "{{ troy_user_name }}"
+    state: present
+    gid: 10420
+
+- name: create user
+  sudo: true
+  user:
+    state: present
+    name: "{{ troy_user_name }}"
+    uid: 10420
+    group: users
+    groups: "{{ troy_user_name }},sudo,staff"
+    comment: Troy Kinsella
+    shell: /usr/bin/fish
+
+- name: create home
+  sudo: true
+  file:
+    path: /home/{{ troy_user_name }}
+    owner: "{{ troy_user_name }}"
+    group: "{{ troy_user_name }}"
+    recurse: yes

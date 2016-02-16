@@ -1,0 +1,5 @@
+---
+troy_user_name: troy
+troy_dotfiles_repo: "git@bitbucket.org:troykinsella/dotfiles.git"
+troy_grant_sudo: yes
+troy_private_key_path: /home/{{ troy_user_name }}/.ssh/id_rsa
