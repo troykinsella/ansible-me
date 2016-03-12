@@ -14,7 +14,7 @@
     force: yes
 
 - sudo_user: "{{ troy_user_name }}"
-  shell: ./bin/install.sh
+  shell: ./bin/install.sh {% if troy_dotfiles_identity_files %}-i{% endif %} {% if troy_dotfiles_workstation_files %}-w{% endif %}
   args:
     chdir: /home/{{ troy_user_name }}/.dotfiles
     creates: /home/{{ troy_user_name }}/.config/fish/config.fish
