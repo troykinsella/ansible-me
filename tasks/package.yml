@@ -1,11 +1,13 @@
 ---
-- apt:
+- name: install basic packages
+  apt:
     state: latest
     pkg: "{{ item }}"
   sudo: true
   with_items:
   - htop
   - curl
-  - nmap
   - fish
   - git
+  - tmux
+  - emacs-nox
