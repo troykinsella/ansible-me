@@ -1,9 +1,9 @@
 ---
 - name: install basic packages
+  become: yes
   apt:
     state: latest
     pkg: "{{ item }}"
-  sudo: true
   with_items:
   - htop
   - curl
