@@ -1,5 +1,7 @@
 ---
 troy_user_name: troy
+troy_user_id: 10420
+troy_group_id: 10420
 troy_dotfiles_repo: "git@bitbucket.org:troykinsella/dotfiles.git"
 troy_dotfiles_identity_files: no
 troy_dotfiles_workstation_files: no
