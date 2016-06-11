@@ -11,6 +11,8 @@
 - git:
     repo: "{{ troy_dotfiles_repo }}"
     dest: /home/{{ troy_user_name }}/.dotfiles
+    accept_hostkey: yes
+    key_file: "{{ troy_private_key_path }}"
     force: yes
 
 - sudo_user: "{{ troy_user_name }}"
