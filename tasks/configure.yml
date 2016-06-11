@@ -1,21 +1,31 @@
 ---
-- authorized_key:
+- name: ssh authorize public key
+  become: yes
+  become_user: "{{ troy_user_name }}"
+  authorized_key:
     user: "{{ troy_user_name }}"
     state: present
     key: "{{ lookup('file', '.ssh/id_rsa.pub') }}"
 
-- template:
+- name: add user to sudoers
+  become: yes
+  template:
     src: sudo.conf.j2
     dest: /etc/sudoers.d/{{ troy_user_name }}
 
-- git:
+- name: clone dotfiles repo
+  become: yes
+  become_user: "{{ troy_user_name }}"
+  git:
     repo: "{{ troy_dotfiles_repo }}"
     dest: /home/{{ troy_user_name }}/.dotfiles
     accept_hostkey: yes
     key_file: "{{ troy_private_key_path }}"
     force: yes
 
-- sudo_user: "{{ troy_user_name }}"
+- name: install dotfiles
+  become: yes
+  become_user: "{{ troy_user_name }}"
   shell: ./bin/install.sh {% if troy_dotfiles_identity_files %}-i{% endif %} {% if troy_dotfiles_workstation_files %}-w{% endif %}
   args:
     chdir: /home/{{ troy_user_name }}/.dotfiles

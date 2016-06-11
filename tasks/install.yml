@@ -1,13 +1,13 @@
 ---
 - name: create group
-  sudo: true
+  become: yes
   group:
     name: "{{ troy_user_name }}"
     state: present
     gid: "{{ troy_group_id }}"
 
 - name: create user
-  sudo: true
+  become: yes
   user:
     state: present
     name: "{{ troy_user_name }}"
@@ -18,7 +18,7 @@
     shell: /usr/bin/fish
 
 - name: create home
-  sudo: true
+  become: yes
   file:
     path: /home/{{ troy_user_name }}
     owner: "{{ troy_user_name }}"
