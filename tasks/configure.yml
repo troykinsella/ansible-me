@@ -26,7 +26,7 @@
 - name: install dotfiles
   become: yes
   become_user: "{{ troy_user_name }}"
-  shell: ./bin/install.sh {% if troy_dotfiles_identity_files %}-i{% endif %} {% if troy_dotfiles_workstation_files %}-w{% endif %}
+  shell: ./bootstrap.sh
   args:
     chdir: /home/{{ troy_user_name }}/.dotfiles
     creates: /home/{{ troy_user_name }}/.config/fish/config.fish
